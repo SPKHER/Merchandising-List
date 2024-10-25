@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>20, 60, 89-95</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: lightblue; padding: 20px; }
+        h1 { color: navy; }
+    </style>
+</head>
+<body>
+    <h1>Details for 20, 60, 89-95</h1>
+    <p>Lawn & Garden, Floral, & Seasonal.</p>
+    <a href="20, 60, 89-95.htm">Back to list</a> <!-- Link to your main page -->
+</body>
+</html>

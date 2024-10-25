@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>13, 14</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: lightcoral; padding: 20px; }
+        h1 { color: darkred; }
+    </style>
+</head>
+<body>
+    <h1>Details for 13, 14</h1>
+    <p>Food</p>
+    <a href="13, 14.htm">Back to list</a>
+</body>
+</html>
