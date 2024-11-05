@@ -5,13 +5,119 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>20, 60, 89-95</title>
     <style>
-        body { font-family: Arial, sans-serif; background-color: lightblue; padding: 20px; }
-        h1 { color: navy; }
+        body { font-family: Arial, sans-serif; background-color: lightgreen; padding: 20px; }
+        h1 { color: darkgreen; }
+        .button { 
+            display: inline-block; /* Makes buttons inline */
+            margin: 5px; /* Space between buttons */
+            padding: 5px 10px; 
+            background-color: darkgreen; 
+            color: white; 
+            border: none; 
+            border-radius: 5px; 
+            cursor: pointer; 
+            font-size: 14px; 
+        }
+        .button:hover { background-color: green; }
+        .text { margin-top: 20px; font-size: 18px; }
+        .iframe-container { margin-top: 20px; display: flex; flex-direction: column; }
+        iframe { width: 100%; height: 500px; border: none; margin-bottom: 10px; }
     </style>
 </head>
 <body>
     <h1>Details for 20, 60, 89-95</h1>
-    <p>Lawn & Garden, Floral, & Seasonal.</p>
-    <a href="20, 60, 89-95.htm">Back to list</a> <!-- Link to your main page -->
+    <p>Lawn & Garden, Floral, & Seasonal</p>
+    <a href="20, 60, 89-95.htm">Back to list</a>
+    
+    <div>
+        <h2>Buttons</h2>
+        <button class="button" id="directorButton">Director</button>
+        <button class="button" id="merchantButton">Merchant</button>
+        <button class="button" id="associateMerchantButton">Associate Merchant</button>
+        <button class="button" id="allocationsButton">Allocations</button>
+        <button class="button" id="replenishmentButton">Replenishment</button>
+        <button class="button" id="assortmentPlannerButton">Assortment Planner</button>
+        <button class="button" id="financialPlannerButton">Financial Planner</button>
+        <button class="button" id="importSpecialistButton">Import Specialist</button>
+        <button class="button" id="merchantAssistantButton">Merchant Assistant</button>
+    </div>
+
+    <div class="text" id="outputText"></div>
+
+    <!-- Iframes container for displaying PDFs -->
+    <div class="iframe-container" id="pdfContainer"></div>
+
+    <script>
+        const outputText = document.getElementById('outputText');
+        const pdfContainer = document.getElementById('pdfContainer');
+
+        const messages = {
+            directorButton: {
+                text: "Sashonna Leak (20, 89-94)<br>Candice Hardiman (60 & 95)",
+                pdf: "files/Director_SOP_13_14.pdf"
+            },
+            merchantButton: {
+                text: "Hao Earley (20)<br>Regina Belka (60)<br>Lan Chen (89, 91, & 93)",
+                pdf: "files/Merchant_SOP_13_14.pdf"
+            },
+            associateMerchantButton: {
+                text: "Open (20)<br>Keturah Riggins (60)<br>Jamaka Moore (89, 91, 93)<br>Hayley Phillips (92, 94)<br>Claire Donovan (95)",
+                pdf: "files/Associate_Merchant_SOP_13_14.pdf"
+            },
+            allocationsButton: {
+                text: "Ashley Soskin (20, 93)<br>Stephanie Strom (60)<br>Jeff Rinehart (89)<br>Matt Bledsoe & Austin Leftwich (91, 95)<br>Matt Bledsoe (92, 94)",
+                pdf: "files/Allocations_SOP_13_14.pdf"
+            },
+            replenishmentButton: {
+                text: "Stephanie Frazier (60)",
+                pdf: "files/Replenishment_SOP_13_14.pdf"
+            },
+            assortmentPlannerButton: {
+                text: "Ashley Soskin (20, 94, 95)<br>Ashley Askew (60, 89)<br>Open (91, 92, 93)",
+                pdf: "files/Assortment_Planner_SOP_13_14.pdf"
+            },
+            financialPlannerButton: {
+                text: "Kasey Frazier (20, 89-95)<br>Robert Rackauskas (60)",
+                pdf: "files/Financial_Planner_SOP_13_14.pdf"
+            },
+            importSpecialistButton: {
+                text: "Felicia Bryant (20)<br>Iquea Cokley (60)<br>Jason Rubin (89, 91-94)<br>Mallory Berry (95)",
+                pdf: "files/Import_Specialist_SOP_13_14.pdf"
+            },
+            merchantAssistantButton: {
+                text: "Hayley Lanier (20, 60, 89-95)",
+                pdfs: [
+                    "W:/Corporate/Merchandise/Merchant Assistants/Spencer Kher/Department SOP/Department 13 SOP.pdf",
+                    "W:/Corporate/Merchandise/Merchant Assistants/Spencer Kher/Department SOP/Department 14 SOP.pdf"
+                ]
+            }
+        };
+
+        function hideAllTexts() {
+            outputText.innerHTML = ""; // Clear previous text using innerHTML
+            pdfContainer.innerHTML = ""; // Clear the PDF container
+        }
+
+        document.querySelectorAll('.button').forEach(button => {
+            button.addEventListener('click', () => {
+                hideAllTexts();
+                const message = messages[button.id];
+                outputText.innerHTML = message.text; // Show corresponding text with line breaks
+
+                // If it's the Merchant Assistant button, display all PDFs
+                if (button.id === "merchantAssistantButton") {
+                    message.pdfs.forEach(pdf => {
+                        const iframe = document.createElement('iframe');
+                        iframe.src = pdf; // Set the PDF source
+                        pdfContainer.appendChild(iframe); // Add iframe to the container
+                    });
+                } else {
+                    const iframe = document.createElement('iframe');
+                    iframe.src = message.pdf; // Set the PDF source for other buttons
+                    pdfContainer.appendChild(iframe); // Add iframe to the container
+                }
+            });
+        });
+    </script>
 </body>
 </html>
