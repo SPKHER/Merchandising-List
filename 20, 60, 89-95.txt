@@ -54,41 +54,42 @@
         const messages = {
             directorButton: {
                 text: "Sashonna Leak (20, 89-94)<br>Candice Hardiman (60 & 95)",
-                pdf: "files/Director_SOP_13_14.pdf"
+                pdf: "files/Director_SOP_20_60_89-95.pdf"
             },
             merchantButton: {
                 text: "Hao Earley (20)<br>Regina Belka (60)<br>Lan Chen (89, 91, & 93)",
-                pdf: "files/Merchant_SOP_13_14.pdf"
+                pdf: "files/Merchant_SOP_20_60_89-95.pdf"
             },
             associateMerchantButton: {
                 text: "Open (20)<br>Keturah Riggins (60)<br>Jamaka Moore (89, 91, 93)<br>Hayley Phillips (92, 94)<br>Claire Donovan (95)",
-                pdf: "files/Associate_Merchant_SOP_13_14.pdf"
+                pdf: "files/Associate_Merchant_SOP_20_60_89-95.pdf"
             },
             allocationsButton: {
                 text: "Ashley Soskin (20, 93)<br>Stephanie Strom (60)<br>Jeff Rinehart (89)<br>Matt Bledsoe & Austin Leftwich (91, 95)<br>Matt Bledsoe (92, 94)",
-                pdf: "files/Allocations_SOP_13_14.pdf"
+                pdf: "files/Allocations_SOP_20_60_89-95.pdf"
             },
             replenishmentButton: {
                 text: "Stephanie Frazier (60)",
-                pdf: "files/Replenishment_SOP_13_14.pdf"
+                pdf: "files/Replenishment_SOP_20_60_89-95.pdf"
             },
             assortmentPlannerButton: {
                 text: "Ashley Soskin (20, 94, 95)<br>Ashley Askew (60, 89)<br>Open (91, 92, 93)",
-                pdf: "files/Assortment_Planner_SOP_13_14.pdf"
+                pdf: "files/Assortment_Planner_SOP_20_60_89-95.pdf"
             },
             financialPlannerButton: {
                 text: "Kasey Frazier (20, 89-95)<br>Robert Rackauskas (60)",
-                pdf: "files/Financial_Planner_SOP_13_14.pdf"
+                pdf: "files/Financial_Planner_SOP_20_60_89-95.pdf"
             },
             importSpecialistButton: {
                 text: "Felicia Bryant (20)<br>Iquea Cokley (60)<br>Jason Rubin (89, 91-94)<br>Mallory Berry (95)",
-                pdf: "files/Import_Specialist_SOP_13_14.pdf"
+                pdf: "files/Import_Specialist_SOP_20_60_89-95.pdf"
             },
             merchantAssistantButton: {
                 text: "Hayley Lanier (20, 60, 89-95)",
                 pdfs: [
-                    "W:/Corporate/Merchandise/Merchant Assistants/Spencer Kher/Department SOP/Department 13 SOP.pdf",
-                    "W:/Corporate/Merchandise/Merchant Assistants/Spencer Kher/Department SOP/Department 14 SOP.pdf"
+                    "W:/Corporate/Merchandise/Merchant Assistants/Spencer Kher/Department SOP/Department 20 SOP.pdf",
+		    "W:/Corporate/Merchandise/Merchant Assistants/Spencer Kher/Department SOP/Department 60 SOP.pdf",
+                    "W:/Corporate/Merchandise/Merchant Assistants/Spencer Kher/Department SOP/Department 89-95 SOP.pdf"
                 ]
             }
         };
