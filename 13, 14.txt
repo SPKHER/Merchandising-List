@@ -5,13 +5,119 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>13, 14</title>
     <style>
-        body { font-family: Arial, sans-serif; background-color: lightcoral; padding: 20px; }
-        h1 { color: darkred; }
+        body { font-family: Arial, sans-serif; background-color: lightgreen; padding: 20px; }
+        h1 { color: darkgreen; }
+        .button { 
+            display: inline-block; /* Makes buttons inline */
+            margin: 5px; /* Space between buttons */
+            padding: 5px 10px; 
+            background-color: darkgreen; 
+            color: white; 
+            border: none; 
+            border-radius: 5px; 
+            cursor: pointer; 
+            font-size: 14px; 
+        }
+        .button:hover { background-color: green; }
+        .text { margin-top: 20px; font-size: 18px; }
+        .iframe-container { margin-top: 20px; display: flex; flex-direction: column; }
+        iframe { width: 100%; height: 500px; border: none; margin-bottom: 10px; }
     </style>
 </head>
 <body>
     <h1>Details for 13, 14</h1>
-    <p>Food</p>
+    <p>Party Celebration, Party Paper, Books & Stationary</p>
     <a href="13, 14.htm">Back to list</a>
+    
+    <div>
+        <h2>Buttons</h2>
+        <button class="button" id="directorButton">Director</button>
+        <button class="button" id="merchantButton">Merchant</button>
+        <button class="button" id="associateMerchantButton">Associate Merchant</button>
+        <button class="button" id="allocationsButton">Allocations</button>
+        <button class="button" id="replenishmentButton">Replenishment</button>
+        <button class="button" id="assortmentPlannerButton">Assortment Planner</button>
+        <button class="button" id="financialPlannerButton">Financial Planner</button>
+        <button class="button" id="importSpecialistButton">Import Specialist</button>
+        <button class="button" id="merchantAssistantButton">Merchant Assistant</button>
+    </div>
+
+    <div class="text" id="outputText"></div>
+
+    <!-- Iframes container for displaying PDFs -->
+    <div class="iframe-container" id="pdfContainer"></div>
+
+    <script>
+        const outputText = document.getElementById('outputText');
+        const pdfContainer = document.getElementById('pdfContainer');
+
+        const messages = {
+            directorButton: {
+                text: "Bryant Reams(13 & 14)",
+                pdf: "files/Director_SOP_13_14.pdf"
+            },
+            merchantButton: {
+                text: "Fred Fillah (13) & Andy Loeser (14)",
+                pdf: "files/Merchant_SOP_13_14.pdf"
+            },
+            associateMerchantButton: {
+                text: "Caitlin Kilpatrick (14)",
+                pdf: "files/Associate_Merchant_SOP_13_14.pdf"
+            },
+            allocationsButton: {
+                text: "Harry Belfore (13 & 14)",
+                pdf: "files/Allocations_SOP_13_14.pdf"
+            },
+            replenishmentButton: {
+                text: "Keristan Lamb (13) & Open (14)",
+                pdf: "files/Replenishment_SOP_13_14.pdf"
+            },
+            assortmentPlannerButton: {
+                text: "Taylor Patrell (13) & Starr Williamson (14)",
+                pdf: "files/Assortment_Planner_SOP_13_14.pdf"
+            },
+            financialPlannerButton: {
+                text: "Danielle Messier (13, 14)",
+                pdf: "files/Financial_Planner_SOP_13_14.pdf"
+            },
+            importSpecialistButton: {
+                text: "Jason Rubin (13 & 14)",
+                pdf: "files/Import_Specialist_SOP_13_14.pdf"
+            },
+            merchantAssistantButton: {
+                text: "Priscilla Reynolds (13 & 14)",
+                pdfs: [
+                    "W:/Corporate/Merchandise/Merchant Assistants/Spencer Kher/Department SOP/Department 13 SOP.pdf",
+                    "W:/Corporate/Merchandise/Merchant Assistants/Spencer Kher/Department SOP/Department 14 SOP.pdf"
+                ]
+            }
+        };
+
+        function hideAllTexts() {
+            outputText.textContent = ""; // Clear previous text
+            pdfContainer.innerHTML = ""; // Clear the PDF container
+        }
+
+        document.querySelectorAll('.button').forEach(button => {
+            button.addEventListener('click', () => {
+                hideAllTexts();
+                const message = messages[button.id];
+                outputText.textContent = message.text; // Show corresponding text
+
+                // If it's the Merchant Assistant button, display all PDFs
+                if (button.id === "merchantAssistantButton") {
+                    message.pdfs.forEach(pdf => {
+                        const iframe = document.createElement('iframe');
+                        iframe.src = pdf; // Set the PDF source
+                        pdfContainer.appendChild(iframe); // Add iframe to the container
+                    });
+                } else {
+                    const iframe = document.createElement('iframe');
+                    iframe.src = message.pdf; // Set the PDF source for other buttons
+                    pdfContainer.appendChild(iframe); // Add iframe to the container
+                }
+            });
+        });
+    </script>
 </body>
 </html>
