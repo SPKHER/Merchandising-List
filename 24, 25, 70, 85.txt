@@ -20,6 +20,8 @@
         }
         .button:hover { background-color: green; }
         .text { margin-top: 20px; font-size: 18px; }
+        .iframe-container { margin-top: 20px; display: flex; flex-direction: column; }
+        iframe { width: 100%; height: 500px; border: none; margin-bottom: 10px; }
     </style>
 </head>
 <body>
@@ -42,33 +44,85 @@
 
     <div class="text" id="outputText"></div>
 
+    <!-- Iframes container for displaying PDFs -->
+    <div class="iframe-container" id="pdfContainer"></div>
+
     <script>
         const outputText = document.getElementById('outputText');
+        const pdfContainer = document.getElementById('pdfContainer');
 
         const messages = {
-            directorButton: "This is the Director's text.",
-            merchantButton: "This is the Merchant's text.",
-            associateMerchantButton: "This is the Associate Merchant's text.",
-            allocationsButton: "This is the Allocations text.",
-            replenishmentButton: "This is the Replenishment text.",
-            assortmentPlannerButton: "This is the Assortment Planner's text.",
-            financialPlannerButton: "This is the Financial Planner's text.",
-            importSpecialistButton: "This is the Import Specialist's text.",
-            merchantAssistantButton: "This is the Merchant Assistant's text."
+            directorButton: {
+                text: "Tammy Balles(24 & 25) & Carlin Maher(50, 70 & 85)",
+                pdf: "files/Director_SOP.pdf"
+            },
+            merchantButton: {
+                text: "Jessica Faber (24) & Ben Pestik Jr.(70 & 85)",
+                pdf: "files/Merchant_SOP.pdf"
+            },
+            associateMerchantButton: {
+                text: "Kaitlin Hernandez(24) & Taylor Gillie (25)",
+                pdf: "files/Associate_Merchant_SOP.pdf"
+            },
+            allocationsButton: {
+                text: "Willy Oyola(24 & 25) & Gwenyth Zobel (25)",
+                pdf: "files/Allocations_SOP.pdf"
+            },
+            replenishmentButton: {
+                text: "Janell Dantzler(24) & Brent Jones(24 & 25)",
+                pdf: "files/Replenishment_SOP.pdf"
+            },
+            assortmentPlannerButton: {
+                text: "Alissa Ralston (24) & Michelle Rhoads (25)",
+                pdf: "files/Assortment_Planner_SOP.pdf"
+            },
+            financialPlannerButton: {
+                text: "Cynthia McDonald (24, 25, & 70)",
+                pdf: "files/Financial_Planner_SOP.pdf"
+            },
+            importSpecialistButton: {
+                text: "Effie Toledo (24, 25, & 85) & Priscilla Cole (56, 70, & 85)",
+                pdf: "files/Import_Specialist_SOP.pdf"
+            },
+            merchantAssistantButton: {
+                text: "Spencer Kher (24, 25, 70, & 85",
+                pdfs: [
+                    "W:/Corporate/Merchandise/Merchant Assistants/Spencer Kher/Department SOP/Department 24 SOP.pdf",
+                    "W:/Corporate/Merchandise/Merchant Assistants/Spencer Kher/Department SOP/Department 25 SOP.pdf",
+                    "W:/Corporate/Merchandise/Merchant Assistants/Spencer Kher/Department SOP/Department 70 SOP.pdf",
+                    "W:/Corporate/Merchandise/Merchant Assistants/Spencer Kher/Department SOP/Department 85 SOP.pdf"
+                ]
+            }
         };
 
         function hideAllTexts() {
             outputText.textContent = ""; // Clear previous text
+            pdfContainer.innerHTML = ""; // Clear the PDF container
         }
 
         document.querySelectorAll('.button').forEach(button => {
             button.addEventListener('click', () => {
                 hideAllTexts();
-                outputText.textContent = messages[button.id]; // Show corresponding text
+                const message = messages[button.id];
+                outputText.textContent = message.text; // Show corresponding text
+
+                // If it's the Merchant Assistant button, display all PDFs
+                if (button.id === "merchantAssistantButton") {
+                    message.pdfs.forEach(pdf => {
+                        const iframe = document.createElement('iframe');
+                        iframe.src = pdf; // Set the PDF source
+                        pdfContainer.appendChild(iframe); // Add iframe to the container
+                    });
+                } else {
+                    const iframe = document.createElement('iframe');
+                    iframe.src = message.pdf; // Set the PDF source for other buttons
+                    pdfContainer.appendChild(iframe); // Add iframe to the container
+                }
             });
         });
     </script>
 </body>
 </html>
+
 
 
