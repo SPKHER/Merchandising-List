@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>20, 60, 89-95</title>
+    <title>15</title>
     <style>
         body { font-family: Arial, sans-serif; background-color: lightgreen; padding: 20px; }
         h1 { color: darkgreen; }
@@ -27,7 +27,8 @@
 <body>
     <h1>Details for 15</h1>
     <p>Toys</p>
-    <a href="15.htm">Back to list</a>
+    <!-- Changed to a button that uses JavaScript to go back to the previous page -->
+    <button class="button" onclick="window.history.back()">Back to list</button>
     
     <div>
         <h2>Buttons</h2>
