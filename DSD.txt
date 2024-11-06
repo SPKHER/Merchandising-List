@@ -88,7 +88,7 @@
                 text: "Timara Pittman<br>Nasia Crawford<br>Michael Satterwhite<br>Emonnie Jacobs",
                 pdfs: [
                     "W:/Corporate/Merchandise/Merchant Assistants/DSD/Department SOP/Department DSD SOP.pdf",
-		            "W:/Corporate/Merchandise/Merchant Assistants/DSD/Department SOP/Department DSD SOP.pdf",
+		    "W:/Corporate/Merchandise/Merchant Assistants/DSD/Department SOP/Department DSD SOP.pdf",
                     "W:/Corporate/Merchandise/Merchant Assistants/DSD/Department SOP/Department DSD SOP.pdf"
                 ]
             }
