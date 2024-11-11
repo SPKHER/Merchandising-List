@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>24, 25, 70, 85</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: lightgreen; padding: 20px; }
+        h1 { color: darkgreen; }
+        .button { 
+            display: inline-block; /* Makes buttons inline */
+            margin: 5px; /* Space between buttons */
+            padding: 5px 10px; 
+            background-color: darkgreen; 
+            color: white; 
+            border: none; 
+            border-radius: 5px; 
+            cursor: pointer; 
+            font-size: 14px; 
+        }
+        .button:hover { background-color: green; }
+        .text { margin-top: 20px; font-size: 18px; }
+    </style>
+</head>
+<body>
+    <h1>Details for 24, 25, 70, 85</h1>
+    <p>Party Celebration, Party Paper, Books & Stationary</p>
+    <a href="24, 25, 70, 85.htm">Back to list</a>
+    
+    <div>
+        <h2>Buttons</h2>
+        <button class="button" id="directorButton">Director</button>
+        <button class="button" id="merchantButton">Merchant</button>
+        <button class="button" id="associateMerchantButton">Associate Merchant</button>
+        <button class="button" id="allocationsButton">Allocations</button>
+        <button class="button" id="replenishmentButton">Replenishment</button>
+        <button class="button" id="assortmentPlannerButton">Assortment Planner</button>
+        <button class="button" id="financialPlannerButton">Financial Planner</button>
+        <button class="button" id="importSpecialistButton">Import Specialist</button>
+        <button class="button" id="merchantAssistantButton">Merchant Assistant</button>
+    </div>
+
+    <div class="text" id="outputText"></div>
+
+    <script>
+        const outputText = document.getElementById('outputText');
+
+        const messages = {
+            directorButton: "This is the Director's text.",
+            merchantButton: "This is the Merchant's text.",
+            associateMerchantButton: "This is the Associate Merchant's text.",
+            allocationsButton: "This is the Allocations text.",
+            replenishmentButton: "This is the Replenishment text.",
+            assortmentPlannerButton: "This is the Assortment Planner's text.",
+            financialPlannerButton: "This is the Financial Planner's text.",
+            importSpecialistButton: "This is the Import Specialist's text.",
+            merchantAssistantButton: "This is the Merchant Assistant's text."
+        };
+
+        function hideAllTexts() {
+            outputText.textContent = ""; // Clear previous text
+        }
+
+        document.querySelectorAll('.button').forEach(button => {
+            button.addEventListener('click', () => {
+                hideAllTexts();
+                outputText.textContent = messages[button.id]; // Show corresponding text
+            });
+        });
+    </script>
+</body>
+</html>
+
+

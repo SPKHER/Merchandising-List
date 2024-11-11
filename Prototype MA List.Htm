@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>List of Names with Buttons</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    background-color: green;
+    margin: 0;
+  }
+  h1 {
+    text-align: center;
+    color: black;
+  }
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+  #nameList {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  .item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  button {
+    margin: 5px;
+    padding: 8px 16px;
+    font-size: 14px;
+    cursor: pointer;
+    border: none;
+    background-color: #007bff; /* Button background */
+    color: white; /* Button text color */
+    border-radius: 5px; /* Rounded corners */
+  }
+  button:hover {
+    background-color: #0056b3; /* Darker on hover */
+  }
+  .info {
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: #f0f8ff;
+    color: #333;
+    width: 200px;
+    min-height: 30px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: none;
+  }
+  .info.active {
+    display: block;
+  }
+</style>
+</head>
+<body>
+  <h1>Merchant Assistants</h1>
+  <div class="container">
+    <ul id="nameList"></ul>
+  </div>
+
+  <script>
+    const names = ["20, 60, 89-95", "50, 85, 86", "98 US", "29, 31", "98 CA", "35, 65", "30, 32, 33", "15", "13, 14", "9, 10", "12, 17", "DSD", "24, 25, 70, 85", "54, 75, 16, 80", "11, 55, 56"];
+
+    const descriptions = {
+      "20, 60, 89-95": "20, 60, 89-95.htm", // Replace with actual page URLs
+      "24, 25, 70, 85": "24, 25, 70, 85.htm",
+      "13, 14": "13, 14.htm",
+      "29, 31": "29, 31.htm",
+      "50, 85, 86": "50, 85, 86.htm",
+      "98 US": "98 US.htm",
+      "98 CA": "98 CA.htm",
+      "35, 65": "35, 65.htm",
+      "15": "15.htm",
+      "54, 75, 16, 80": "54, 75, 16, 80.htm",
+      "30, 32, 33": "30, 32, 33.htm",
+      "9, 10": "9, 10.htm",
+      "12, 17": "12, 17.htm",
+      "11, 55, 56": "11, 55, 56.htm",
+      "DSD": "DSD.htm"
+    };
+
+    function createButtons() {
+      const nameList = document.getElementById("nameList");
+      nameList.innerHTML = '';
+
+      names.forEach(name => {
+        const li = document.createElement("li");
+        li.className = "item";
+
+        const button = document.createElement("button");
+        button.textContent = name;
+        button.setAttribute("aria-expanded", "false");
+        button.type = "button"; // Set button type
+
+        button.addEventListener("click", () => {
+          // Navigate to the corresponding page
+          window.location.href = descriptions[name];
+        });
+
+        li.appendChild(button);
+        nameList.appendChild(li);
+      });
+    }
+
+    createButtons();
+  </script>
+</body>
+</html>
