@@ -3,17 +3,122 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DSD</title>
+    <title>20, 60, 89-95</title>
     <style>
-        body { font-family: Arial, sans-serif; background-color: lavender; padding: 20px; }
-        h1 { color: mediumslateblue; }
+        body { font-family: Arial, sans-serif; background-color: lightgreen; padding: 20px; }
+        h1 { color: darkgreen; }
+        .button { 
+            display: inline-block; /* Makes buttons inline */
+            margin: 5px; /* Space between buttons */
+            padding: 5px 10px; 
+            background-color: darkgreen; 
+            color: white; 
+            border: none; 
+            border-radius: 5px; 
+            cursor: pointer; 
+            font-size: 14px; 
+        }
+        .button:hover { background-color: green; }
+        .text { margin-top: 20px; font-size: 18px; }
+        .iframe-container { margin-top: 20px; display: flex; flex-direction: column; }
+        iframe { width: 100%; height: 500px; border: none; margin-bottom: 10px; }
     </style>
 </head>
 <body>
     <h1>Details for DSD</h1>
-    <p>Information about DSD.</p>
+    <p>Frozen</p>
     <a href="DSD.htm">Back to list</a>
-    <br>
-    <a href="New Store Surveys.docx" download>Download DSD Document</a> <!-- Link to your .docx file -->
+    
+    <div>
+        <h2>Buttons</h2>
+        <button class="button" id="directorButton">Director</button>
+        <button class="button" id="merchantButton">Merchant</button>
+        <button class="button" id="associateMerchantButton">Associate Merchant</button>
+        <button class="button" id="allocationsButton">Allocations</button>
+        <button class="button" id="replenishmentButton">Replenishment</button>
+        <button class="button" id="assortmentPlannerButton">Assortment Planner</button>
+        <button class="button" id="financialPlannerButton">Financial Planner</button>
+        <button class="button" id="importSpecialistButton">Import Specialist</button>
+        <button class="button" id="merchantAssistantButton">Merchant Assistant</button>
+    </div>
+
+    <div class="text" id="outputText"></div>
+
+    <!-- Iframes container for displaying PDFs -->
+    <div class="iframe-container" id="pdfContainer"></div>
+
+    <script>
+        const outputText = document.getElementById('outputText');
+        const pdfContainer = document.getElementById('pdfContainer');
+
+        const messages = {
+            directorButton: {
+                text: "Kevin Minchin (12, 17)",
+                pdf: "files/Director_SOP_20_60_89-95.pdf"
+            },
+            merchantButton: {
+                text: "Tristan White & Mike Smith (12)<br>Ashley Jones & David Thompson (17)",
+                pdf: "files/Merchant_SOP_20_60_89-95.pdf"
+            },
+            associateMerchantButton: {
+                text: "Taylor Pattrell & Brian Ardolino (12)<br>Kyle Knight & Stefanie Cardwell (17)",
+                pdf: "files/Associate_Merchant_SOP_20_60_89-95.pdf"
+            },
+            allocationsButton: {
+                text: "Matthew Bledsoe (12)<br>Sophie Zimm (17)",
+                pdf: "files/Allocations_SOP_20_60_89-95.pdf"
+            },
+            replenishmentButton: {
+                text: "Shawntel Pike (12)<br>Tiffany Johnston (17)",
+                pdf: "files/Replenishment_SOP_20_60_89-95.pdf"
+            },
+            assortmentPlannerButton: {
+                text: "Courtney Rodgers & Connor Campbell (12)<br>Evelyn Knight (17)",
+                pdf: "files/Assortment_Planner_SOP_20_60_89-95.pdf"
+            },
+            financialPlannerButton: {
+                text: "Maribeth Foster (12, 17)",
+                pdf: "files/Financial_Planner_SOP_20_60_89-95.pdf"
+            },
+            importSpecialistButton: {
+                text: "Jason Rubin (12, 17)",
+                pdf: "files/Import_Specialist_SOP_20_60_89-95.pdf"
+            },
+            merchantAssistantButton: {
+                text: "Timara Pittman<br>Nasia Crawford<br>Michael Satterwhite<br>Emonnie Jacobs",
+                pdfs: [
+                    "W:/Corporate/Merchandise/Merchant Assistants/DSD/Department SOP/Department 20 SOP.pdf",
+		            "W:/Corporate/Merchandise/Merchant Assistants/DSD/Department SOP/Department 60 SOP.pdf",
+                    "W:/Corporate/Merchandise/Merchant Assistants/DSD/Department SOP/Department 89-95 SOP.pdf"
+                ]
+            }
+        };
+
+        function hideAllTexts() {
+            outputText.innerHTML = ""; // Clear previous text using innerHTML
+            pdfContainer.innerHTML = ""; // Clear the PDF container
+        }
+
+        document.querySelectorAll('.button').forEach(button => {
+            button.addEventListener('click', () => {
+                hideAllTexts();
+                const message = messages[button.id];
+                outputText.innerHTML = message.text; // Show corresponding text with line breaks
+
+                // If it's the Merchant Assistant button, display all PDFs
+                if (button.id === "merchantAssistantButton") {
+                    message.pdfs.forEach(pdf => {
+                        const iframe = document.createElement('iframe');
+                        iframe.src = pdf; // Set the PDF source
+                        pdfContainer.appendChild(iframe); // Add iframe to the container
+                    });
+                } else {
+                    const iframe = document.createElement('iframe');
+                    iframe.src = message.pdf; // Set the PDF source for other buttons
+                    pdfContainer.appendChild(iframe); // Add iframe to the container
+                }
+            });
+        });
+    </script>
 </body>
 </html>
