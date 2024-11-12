@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>20, 60, 89-95</title>
+    <title>35, 65</title>
     <style>
         body { font-family: Arial, sans-serif; background-color: lightgreen; padding: 20px; }
         h1 { color: darkgreen; }
@@ -25,9 +25,10 @@
     </style>
 </head>
 <body>
-    <h1>Details for DSD</h1>
-    <p>Frozen</p>
-    <a href="DSD.htm">Back to list</a>
+    <h1>Details for 9, 10</h1>
+    <p>Chocolate Gum & mints and Non-chocolates</p>
+    <!-- Updated "Back to list" button to redirect to the list page -->
+    <button class="button" onclick="window.location.href='Prototype MA List.htm'">Back to list</button>
     
     <div>
         <h2>Buttons</h2>
@@ -53,48 +54,48 @@
 
         const messages = {
             directorButton: {
-                text: "Kevin Minchin (12, 17)",
-                pdf: "files/Director_SOP_12_17.pdf"
+                text: "Kristina Kissner (9)<br>Anna Norman (10)",
+                pdf: "files/Director_SOP_9_10.pdf"
             },
             merchantButton: {
-                text: "Tristan White & Mike Smith (12)<br>Ashley Jones & David Thompson (17)",
-                pdf: "files/Merchant_SOP_12_17.pdf"
+                text: "Katie Alexander (9, 10)", // Line break for names
+                pdf: "files/Merchant_SOP_9_10.pdf"
             },
             associateMerchantButton: {
-                text: "Taylor Pattrell & Brian Ardolino (12)<br>Kyle Knight & Stefanie Cardwell (17)",
-                pdf: "files/Associate_Merchant_SOP_12_17.pdf"
+                text: "Ashton Ferrell (9)<br>Leslie Lagrange (10)", // Line break for names
+                pdf: "files/Associate_Merchant_SOP_9_10.pdf"
             },
             allocationsButton: {
-                text: "Matthew Bledsoe (12)<br>Sophie Zimm (17)",
-                pdf: "files/Allocations_SOP_12_17.pdf"
+                text: "Matt Bohan (9, 10)", // Line break for names
+                pdf: "files/Allocations_SOP_29_31.pdf"
             },
             replenishmentButton: {
-                text: "Shawntel Pike (12)<br>Tiffany Johnston (17)",
-                pdf: "files/Replenishment_SOP_12_17.pdf"
+                text: "Katie Bullock (9, 10)", // Line break for names
+                pdf: "files/Replenishment_SOP_29_31.pdf"
             },
             assortmentPlannerButton: {
-                text: "Courtney Rodgers & Connor Campbell (12)<br>Evelyn Knight (17)",
-                pdf: "files/Assortment_Planner_SOP_12_17.pdf"
+                text: "Tucker dinning (9)<br>Devin Grady (10)", // Line break for names
+                pdf: "files/Assortment_Planner_SOP_9_10.pdf"
             },
             financialPlannerButton: {
-                text: "Maribeth Foster (12, 17)",
-                pdf: "files/Financial_Planner_SOP_12_17.pdf"
+                text: "Robert Rackauskas (35, 65)",
+                pdf: "files/Financial_Planner_SOP_9_10.pdf"
             },
             importSpecialistButton: {
-                text: "Jason Rubin (12, 17)",
-                pdf: "files/Import_Specialist_SOP_12_17.pdf"
+                text: "Brianna Bellamy (9, 10)",
+                pdf: "files/Import_Specialist_SOP_9_10.pdf"
             },
             merchantAssistantButton: {
-                text: "Timara Pittman<br>Nasia Crawford<br>Michael Satterwhite<br>Emonnie Jacobs",
+                text: "Baylee Agagas(9, 10)", // Line break for names and descriptions
                 pdfs: [
-                    "W:/Corporate/Merchandise/Merchant Assistants/DSD/Department SOP/Department 12 SOP.pdf",
-		    "W:/Corporate/Merchandise/Merchant Assistants/DSD/Department SOP/Department 17 SOP.pdf",
+                    "W:/Corporate/Merchandise/Merchant Assistants/Maia Palmer/Department SOP/Department 35 SOP.pdf",
+                    "W:/Corporate/Merchandise/Merchant Assistants/Maia Palmer/Department SOP/Department 65 SOP.pdf"
                 ]
             }
         };
 
         function hideAllTexts() {
-            outputText.innerHTML = ""; // Clear previous text using innerHTML
+            outputText.innerHTML = ""; // Clear previous text (use innerHTML to preserve HTML tags)
             pdfContainer.innerHTML = ""; // Clear the PDF container
         }
 
@@ -102,7 +103,7 @@
             button.addEventListener('click', () => {
                 hideAllTexts();
                 const message = messages[button.id];
-                outputText.innerHTML = message.text; // Show corresponding text with line breaks
+                outputText.innerHTML = message.text; // Show corresponding text with HTML tags (line breaks)
 
                 // If it's the Merchant Assistant button, display all PDFs
                 if (button.id === "merchantAssistantButton") {
