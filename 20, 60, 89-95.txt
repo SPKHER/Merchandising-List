@@ -87,9 +87,9 @@
             merchantAssistantButton: {
                 text: "Hayley Lanier (20, 60, 89-95)",
                 pdfs: [
-                    "W:/Corporate/Merchandise/Merchant Assistants/Spencer Kher/Department SOP/Department 20 SOP.pdf",
-		    "W:/Corporate/Merchandise/Merchant Assistants/Spencer Kher/Department SOP/Department 60 SOP.pdf",
-                    "W:/Corporate/Merchandise/Merchant Assistants/Spencer Kher/Department SOP/Department 89-95 SOP.pdf"
+                    "W:/Corporate/Merchandise/Merchant Assistants/Hayley Lanier/Department SOP/Department 20 SOP.pdf",
+		    "W:/Corporate/Merchandise/Merchant Assistants/Hayley Lanier/Department SOP/Department 60 SOP.pdf",
+                    "W:/Corporate/Merchandise/Merchant Assistants/Hayley Lanier/Department SOP/Department 89-95 SOP.pdf"
                 ]
             }
         };
