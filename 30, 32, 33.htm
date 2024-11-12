@@ -5,13 +5,130 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>30, 32, 33</title>
     <style>
-        body { font-family: Arial, sans-serif; background-color: lightseagreen; padding: 20px; }
-        h1 { color: darkslategray; }
+        body { font-family: Arial, sans-serif; background-color: lightgreen; padding: 20px; }
+        h1 { color: darkgreen; }
+        .button { 
+            display: inline-block; /* Makes buttons inline */
+            margin: 5px; /* Space between buttons */
+            padding: 5px 10px; 
+            background-color: darkgreen; 
+            color: white; 
+            border: none; 
+            border-radius: 5px; 
+            cursor: pointer; 
+            font-size: 14px; 
+        }
+        .button:hover { background-color: green; }
+        .text { margin-top: 20px; font-size: 18px; white-space: pre-line; } /* Ensure line breaks are respected */
+        .iframe-container { margin-top: 20px; display: flex; flex-direction: column; }
+        iframe { width: 100%; height: 500px; border: none; margin-bottom: 10px; }
     </style>
 </head>
 <body>
     <h1>Details for 30, 32, 33</h1>
-    <p>Household products, Kitchenware, & Textiles.</p>
-    <a href="30, 32, 33.htm">Back to list</a>
+    <p>Household products, Kitchenware, Textiles</p>
+    <a href="#" id="backButton">Back to list</a> <!-- Updated to an anchor tag with an ID -->
+
+    <div>
+        <h2>Buttons</h2>
+        <button class="button" id="directorButton">Director</button>
+        <button class="button" id="merchantButton">Merchant</button>
+        <button class="button" id="associateMerchantButton">Associate Merchant</button>
+        <button class="button" id="allocationsButton">Allocations</button>
+        <button class="button" id="replenishmentButton">Replenishment</button>
+        <button class="button" id="assortmentPlannerButton">Assortment Planner</button>
+        <button class="button" id="financialPlannerButton">Financial Planner</button>
+        <button class="button" id="importSpecialistButton">Import Specialist</button>
+        <button class="button" id="merchantAssistantButton">Merchant Assistant</button>
+    </div>
+
+    <div class="text" id="outputText"></div>
+
+    <!-- Iframes container for displaying PDFs -->
+    <div class="iframe-container" id="pdfContainer"></div>
+
+    <script>
+        const outputText = document.getElementById('outputText');
+        const pdfContainer = document.getElementById('pdfContainer');
+        const backButton = document.getElementById('backButton'); // Reference the back button
+
+        const messages = {
+            directorButton: {
+                text: "George Wadsworth (30, 32, 33)",
+                pdf: "files/Director_SOP_30_32_33.pdf"
+            },
+            merchantButton: {
+                text: "Patty Minogue & Laura Wagner (30)<br>Alex Bracey (32)<br>Mary Pollard(33)",
+                pdf: "files/Merchant_SOP_30_32_33.pdf"
+            },
+            associateMerchantButton: {
+                text: "Jesse Loury (30)<br>Jamie Fuller (32)<br>Jerralyn Nave(33)",
+                pdf: "files/Associate_Merchant_SOP_30_32_33.pdf"
+            },
+            allocationsButton: {
+                text: "Zach Ennis (30)<br>Kelly Smestad (32)<br>Selena Carter (33)",
+                pdf: "files/Allocations_SOP_30_32_33.pdf
+            },
+            replenishmentButton: {
+                text: "Nicholas Kincade (30)<br>Kelly Smestad (32)<br>Nicholas Kincade (33)",
+                pdf: "files/Replenishment_SOP_30_32_33.pdf
+            },
+            assortmentPlannerButton: {
+                text: "Seretha McHugh & Megan Kors (30)<br>Zachary Schroeder (32)<br>Sheena Owen (33)",
+                pdf: "files/Assortment_Planner_SOP_30_32_33.pdf
+            },
+            financialPlannerButton: {
+                text: "Allison Pucel (30, 32, 33)",
+                pdf: "files/Financial_Planner_SOP_30_32_33.pdf"
+            },
+            importSpecialistButton: {
+                text: "Jessica Matistic (30)<br>Brandon Keiper (32, 33)",
+                pdf: "files/Import_Specialist_SOP_30_32_33.pdf"
+            },
+            merchantAssistantButton: {
+                text: "Nicole Edwards (30, 32, 33)",
+                pdfs: [
+                    "W:/Corporate/Merchandise/Merchant Assistants/Nicole Edwards/Department SOP/Department 30 SOP.pdf",
+                    "W:/Corporate/Merchandise/Merchant Assistants/Nicole Edwards/Department SOP/Department 32 SOP.pdf",
+                    "W:/Corporate/Merchandise/Merchant Assistants/Nicole Edwards/Department SOP/Department 33 SOP.pdf"
+                ]
+            }
+        };
+
+        // Function to hide previous text and reset the PDF container
+        function hideAllTexts() {
+            outputText.innerHTML = ""; // Clear previous text (use innerHTML to allow line breaks)
+            pdfContainer.innerHTML = ""; // Clear the PDF container
+        }
+
+        // Add click event listeners for all the buttons
+        document.querySelectorAll('.button').forEach(button => {
+            button.addEventListener('click', () => {
+                hideAllTexts();
+                const message = messages[button.id];
+                
+                // Show corresponding text using innerHTML to allow <br> tags to work
+                outputText.innerHTML = message.text; 
+
+                // If it's the Merchant Assistant button, display all PDFs
+                if (button.id === "merchantAssistantButton") {
+                    message.pdfs.forEach(pdf => {
+                        const iframe = document.createElement('iframe');
+                        iframe.src = pdf; // Set the PDF source
+                        pdfContainer.appendChild(iframe); // Add iframe to the container
+                    });
+                } else {
+                    const iframe = document.createElement('iframe');
+                    iframe.src = message.pdf; // Set the PDF source for other buttons
+                    pdfContainer.appendChild(iframe); // Add iframe to the container
+                }
+            });
+        });
+
+        // "Back to list" button functionality
+        backButton.addEventListener('click', () => {
+            history.back(); // Takes the user back to the previous page in history
+        });
+    </script>
 </body>
 </html>
