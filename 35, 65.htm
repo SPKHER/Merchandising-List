@@ -8,8 +8,8 @@
         body { font-family: Arial, sans-serif; background-color: lightgreen; padding: 20px; }
         h1 { color: darkgreen; }
         .button { 
-            display: inline-block; /* Makes buttons inline */
-            margin: 5px; /* Space between buttons */
+            display: inline-block;
+            margin: 5px;
             padding: 5px 10px; 
             background-color: darkgreen; 
             color: white; 
@@ -27,7 +27,6 @@
 <body>
     <h1>Details for 29, 31</h1>
     <p>Hardware & Electronics</p>
-    <!-- Updated "Back to list" button to redirect to the list page -->
     <button class="button" onclick="window.location.href='Prototype MA List.htm'">Back to list</button>
     
     <div>
@@ -45,7 +44,6 @@
 
     <div class="text" id="outputText"></div>
 
-    <!-- Iframes container for displaying PDFs -->
     <div class="iframe-container" id="pdfContainer"></div>
 
     <script>
@@ -55,38 +53,31 @@
         const messages = {
             directorButton: {
                 text: "Brooks Harger (35, 65)",
-                pdf: "files/Director_SOP_29_31.pdf"
             },
             merchantButton: {
-                text: "Lindsay Sharlow (35)<br>Diana Avato (65)", // Line break for names
-                pdf: "files/Merchant_SOP_29_31.pdf"
+                text: "Lindsay Sharlow (35)<br>Diana Avato (65)",
             },
             associateMerchantButton: {
-                text: "Harry Russell (35)<br>John Odorski (65)", // Line break for names
-                pdf: "files/Associate_Merchant_SOP_29_31.pdf"
+                text: "Harry Russell (35)<br>John Odorski (65)",
             },
             allocationsButton: {
-                text: "Garrett Blanchard (35)<br>Redell Atkinson (65)", // Line break for names
-                pdf: "files/Allocations_SOP_29_31.pdf"
+                text: "Garrett Blanchard (35)<br>Redell Atkinson (65)",
+                pdf: "C:/Users/spkher/OneDrive - Dollar Tree/Documents/Prototype MA list-project/SOP stuff/DT Allocation Manual 2018.pdf"
             },
             replenishmentButton: {
-                text: "Redell Atkinson (35)<br>Stephanie Frazier (65)", // Line break for names
-                pdf: "files/Replenishment_SOP_29_31.pdf"
+                text: "Redell Atkinson (35)<br>Stephanie Frazier (65)",
             },
             assortmentPlannerButton: {
-                text: "Patrick O'Hora (35)<br>Alain Villafranca (65)", // Line break for names
-                pdf: "files/Assortment_Planner_SOP_29_31.pdf"
+                text: "Patrick O'Hora (35)<br>Alain Villafranca (65)",
             },
             financialPlannerButton: {
                 text: "Debbie Piercy (35, 65)",
-                pdf: "files/Financial_Planner_SOP_29_31.pdf"
             },
             importSpecialistButton: {
                 text: "Brianna Bellamy (35, 65)",
-                pdf: "files/Import_Specialist_SOP_29_31.pdf"
             },
             merchantAssistantButton: {
-                text: "Maia Palmer (35, 65)<br>Department 35 SOP<br>Department 65 SOP", // Line break for names and descriptions
+                text: "Maia Palmer (35, 65)",
                 pdfs: [
                     "W:/Corporate/Merchandise/Merchant Assistants/Maia Palmer/Department SOP/Department 35 SOP.pdf",
                     "W:/Corporate/Merchandise/Merchant Assistants/Maia Palmer/Department SOP/Department 65 SOP.pdf"
@@ -95,27 +86,26 @@
         };
 
         function hideAllTexts() {
-            outputText.innerHTML = ""; // Clear previous text (use innerHTML to preserve HTML tags)
-            pdfContainer.innerHTML = ""; // Clear the PDF container
+            outputText.innerHTML = "";
+            pdfContainer.innerHTML = "";
         }
 
         document.querySelectorAll('.button').forEach(button => {
             button.addEventListener('click', () => {
                 hideAllTexts();
                 const message = messages[button.id];
-                outputText.innerHTML = message.text; // Show corresponding text with HTML tags (line breaks)
+                outputText.innerHTML = message.text;
 
-                // If it's the Merchant Assistant button, display all PDFs
                 if (button.id === "merchantAssistantButton") {
                     message.pdfs.forEach(pdf => {
                         const iframe = document.createElement('iframe');
-                        iframe.src = pdf; // Set the PDF source
-                        pdfContainer.appendChild(iframe); // Add iframe to the container
+                        iframe.src = pdf;
+                        pdfContainer.appendChild(iframe);
                     });
                 } else {
                     const iframe = document.createElement('iframe');
-                    iframe.src = message.pdf; // Set the PDF source for other buttons
-                    pdfContainer.appendChild(iframe); // Add iframe to the container
+                    iframe.src = message.pdf;
+                    pdfContainer.appendChild(iframe);
                 }
             });
         });
