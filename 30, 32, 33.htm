@@ -41,6 +41,8 @@
         <button class="button" id="financialPlannerButton">Financial Planner</button>
         <button class="button" id="importSpecialistButton">Import Specialist</button>
         <button class="button" id="merchantAssistantButton">Merchant Assistant</button>
+        <!-- Added Logistics button -->
+        <button class="button" id="logisticsButton">Logistics</button>
     </div>
 
     <div class="text" id="outputText"></div>
@@ -92,6 +94,10 @@
                     "W:/Corporate/Merchandise/Merchant Assistants/Nicole Edwards/Department SOP/Department 32 SOP.pdf",
                     "W:/Corporate/Merchandise/Merchant Assistants/Nicole Edwards/Department SOP/Department 33 SOP.pdf"
                 ]
+            },
+            // Added Logistics entry
+            logisticsButton: {
+                text: "Monica Questel (30, 32, 33)",  
             }
         };
 
@@ -113,7 +119,13 @@
                         iframe.src = pdf;
                         pdfContainer.appendChild(iframe);
                     });
+                } else if (button.id === "logisticsButton") {
+                    // Special handling for the Logistics button
+                    const iframe = document.createElement('iframe');
+                    iframe.src = message.pdf;  // Set the PDF source for Logistics
+                    pdfContainer.appendChild(iframe);
                 } else {
+                    // For other buttons, display a single PDF
                     const iframe = document.createElement('iframe');
                     iframe.src = message.pdf;
                     pdfContainer.appendChild(iframe);
