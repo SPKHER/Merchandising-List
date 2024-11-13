@@ -27,7 +27,9 @@
 <body>
     <h1>Details for 20, 60, 89-95</h1>
     <p>Lawn & Garden, Floral, & Seasonal</p>
-    <a href="20, 60, 89-95.htm">Back to list</a>
+    
+    <!-- "Back to list" as a button -->
+    <button class="button" onclick="goBack()">Back to list</button>
     
     <div>
         <h2>Buttons</h2>
@@ -87,9 +89,8 @@
             merchantAssistantButton: {
                 text: "Hayley Lanier (20, 60, 89-95)",
                 pdfs: [
-                    "W:/Corporate/Merchandise/Merchant Assistants/Hayley Lanier/Department SOP/Department 20 SOP.pdf",
-		    "W:/Corporate/Merchandise/Merchant Assistants/Hayley Lanier/Department SOP/Department 60 SOP.pdf",
-                    "W:/Corporate/Merchandise/Merchant Assistants/Hayley Lanier/Department SOP/Department 89-95 SOP.pdf"
+                    "C:/Users/spkher/OneDrive - Dollar Tree/Documents/Prototype MA list-project/SOP stuff/MA_Product Art PBS Approval Process.pdf",
+                    "C:/Users/spkher/OneDrive - Dollar Tree/Documents/Prototype MA list-project/SOP stuff/Updated Christmas Wrap PO Tracking 11.11.24.pdf",
                 ]
             }
         };
@@ -97,6 +98,11 @@
         function hideAllTexts() {
             outputText.innerHTML = ""; // Clear previous text using innerHTML
             pdfContainer.innerHTML = ""; // Clear the PDF container
+        }
+
+        // Function to go back to the previous page in browser history
+        function goBack() {
+            window.history.back();
         }
 
         document.querySelectorAll('.button').forEach(button => {
