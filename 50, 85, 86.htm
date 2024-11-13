@@ -8,8 +8,8 @@
         body { font-family: Arial, sans-serif; background-color: lightgreen; padding: 20px; }
         h1 { color: darkgreen; }
         .button { 
-            display: inline-block; /* Makes buttons inline */
-            margin: 5px; /* Space between buttons */
+            display: inline-block;
+            margin: 5px;
             padding: 5px 10px; 
             background-color: darkgreen; 
             color: white; 
@@ -19,7 +19,7 @@
             font-size: 14px; 
         }
         .button:hover { background-color: green; }
-        .text { margin-top: 20px; font-size: 18px; white-space: pre-line; } /* Ensure line breaks are respected */
+        .text { margin-top: 20px; font-size: 18px; white-space: pre-line; }
         .iframe-container { margin-top: 20px; display: flex; flex-direction: column; }
         iframe { width: 100%; height: 500px; border: none; margin-bottom: 10px; }
     </style>
@@ -27,7 +27,7 @@
 <body>
     <h1>Details for 50, 85, 86</h1>
     <p>Home decor, Stationary, Crafts</p>
-    <a href="#" id="backButton">Back to list</a> <!-- Updated to an anchor tag with an ID -->
+    <button class="button" id="backButton">Back to list</button>
 
     <div>
         <h2>Buttons</h2>
@@ -44,90 +44,77 @@
 
     <div class="text" id="outputText"></div>
 
-    <!-- Iframes container for displaying PDFs -->
     <div class="iframe-container" id="pdfContainer"></div>
 
     <script>
         const outputText = document.getElementById('outputText');
         const pdfContainer = document.getElementById('pdfContainer');
-        const backButton = document.getElementById('backButton'); // Reference the back button
+        const backButton = document.getElementById('backButton');
 
         const messages = {
             directorButton: {
                 text: "Carlin Maher (50, 85. 86)",
-                pdf: "files/Director_SOP_50_85_86.pdf"
             },
             merchantButton: {
                 text: "Shannon Playford (50)<br>Maggie Carroll & Ben Pestik Jr. (85)<br>Colleen Vander Heyden (86)",
-                pdf: "files/Merchant_SOP_50_85_86.pdf"
             },
             associateMerchantButton: {
                 text: "Erin Temme-Stout (50)<br>Stacie Carden (85)<br>Joseph Turbe (86)",
-                pdf: "files/Associate_Merchant_SOP_50_85_86.pdf"
             },
             allocationsButton: {
-                text: "Melissa Caffee-Peacock (50)<br>Chantel Smallwood & Bailey Lovell (85)<br>Alexis Elliot",
-                pdf: "files/Allocations_SOP_50_85_86.pdf
+                text: "Melissa Caffee-Peacock (50)<br>Chantel Smallwood & Bailey Lovell (85)<br>Alexis Elliot (86)",
+                pdf: "C:/Users/spkher/OneDrive - Dollar Tree/Documents/Prototype MA list-project/SOP stuff/DT Allocation Manual 2018.pdf"
             },
             replenishmentButton: {
                 text: "Melissa Caffee-Peacock(50)<br>Kathleen Wickert (85, 86)",
-                pdf: "files/Replenishment_SOP_50_85_86.pdf
             },
             assortmentPlannerButton: {
                 text: "Caroline Wales (50)<br>Jessica Bancroft (85)<br>Ashley Soskin (86)",
-                pdf: "files/Assortment_Planner_SOP_50_85_86.pdf
             },
             financialPlannerButton: {
                 text: "Lavonda Wilks (50, 85, 86)",
-                pdf: "files/Financial_Planner_SOP_50_85_86.pdf"
             },
             importSpecialistButton: {
                 text: "Priscilla Cole (50, 85, 86)",
-                pdf: "files/Import_Specialist_SOP_50_85_86.pdf"
             },
             merchantAssistantButton: {
                 text: "Spencer Kher (50, 85, 86)",
                 pdfs: [
-                    "W:/Corporate/Merchandise/Merchant Assistants/Paige Whiteford/Department SOP/Department 50 SOP.pdf",
-                    "W:/Corporate/Merchandise/Merchant Assistants/Paige Whiteford/Department SOP/Department 85 SOP.pdf",
-                    "W:/Corporate/Merchandise/Merchant Assistants/Paige Whiteford/Department SOP/Department 86 SOP.pdf"
+                    "W:/Corporate/Merchandise/Merchant Assistants/Department SOP/Department 50 SOP.pdf",
+                    "W:/Corporate/Merchandise/Merchant Assistants/Department SOP/Department 85 SOP.pdf",
+                    "W:/Corporate/Merchandise/Merchant Assistants/Department SOP/Department 86 SOP.pdf"
                 ]
             }
         };
 
-        // Function to hide previous text and reset the PDF container
         function hideAllTexts() {
-            outputText.innerHTML = ""; // Clear previous text (use innerHTML to allow line breaks)
-            pdfContainer.innerHTML = ""; // Clear the PDF container
+            outputText.innerHTML = "";
+            pdfContainer.innerHTML = "";
         }
 
-        // Add click event listeners for all the buttons
         document.querySelectorAll('.button').forEach(button => {
             button.addEventListener('click', () => {
                 hideAllTexts();
                 const message = messages[button.id];
                 
-                // Show corresponding text using innerHTML to allow <br> tags to work
-                outputText.innerHTML = message.text; 
+                outputText.innerHTML = message.text;
 
-                // If it's the Merchant Assistant button, display all PDFs
                 if (button.id === "merchantAssistantButton") {
                     message.pdfs.forEach(pdf => {
                         const iframe = document.createElement('iframe');
-                        iframe.src = pdf; // Set the PDF source
-                        pdfContainer.appendChild(iframe); // Add iframe to the container
+                        iframe.src = pdf;
+                        pdfContainer.appendChild(iframe);
                     });
                 } else {
                     const iframe = document.createElement('iframe');
-                    iframe.src = message.pdf; // Set the PDF source for other buttons
-                    pdfContainer.appendChild(iframe); // Add iframe to the container
+                    iframe.src = message.pdf;
+                    pdfContainer.appendChild(iframe);
                 }
             });
         });
 
-        // "Back to list" button functionality
         backButton.addEventListener('click', () => {
-            history.back(); // Takes the user back to the previous page in history
+            history.back();
         });
     </script>
 </body>
