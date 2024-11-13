@@ -42,6 +42,8 @@
         <button class="button" id="financialPlannerButton">Financial Planner</button>
         <button class="button" id="importSpecialistButton">Import Specialist</button>
         <button class="button" id="merchantAssistantButton">Merchant Assistant</button>
+        <!-- Added Logistics button -->
+        <button class="button" id="logisticsButton">Logistics</button> 
     </div>
 
     <div class="text" id="outputText"></div>
@@ -92,6 +94,10 @@
                     "C:/Users/spkher/OneDrive - Dollar Tree/Documents/Prototype MA list-project/SOP stuff/MA_Product Art PBS Approval Process.pdf",
                     "C:/Users/spkher/OneDrive - Dollar Tree/Documents/Prototype MA list-project/SOP stuff/Updated Christmas Wrap PO Tracking 11.11.24.pdf",
                 ]
+            },
+            // Added Logistics message
+            logisticsButton: {
+                text: "Benjamin Hux",  
             }
         };
 
@@ -118,7 +124,13 @@
                         iframe.src = pdf; // Set the PDF source
                         pdfContainer.appendChild(iframe); // Add iframe to the container
                     });
+                } else if (button.id === "logisticsButton") {
+                    // If it's the Logistics button, display the associated PDF
+                    const iframe = document.createElement('iframe');
+                    iframe.src = message.pdf; // Set the Logistics PDF source
+                    pdfContainer.appendChild(iframe); // Add iframe to the container
                 } else {
+                    // For all other buttons, display the single PDF
                     const iframe = document.createElement('iframe');
                     iframe.src = message.pdf; // Set the PDF source for other buttons
                     pdfContainer.appendChild(iframe); // Add iframe to the container
