@@ -38,6 +38,7 @@
         <button class="button" id="assortmentPlannerButton">Assortment Planner</button>
         <button class="button" id="financialPlannerButton">Financial Planner</button>
         <button class="button" id="merchantAssistantButton">Merchant Assistant</button>
+        <button class="button" id="logisticsButton">Logistics</button> <!-- Added Logistics button -->
     </div>
 
     <div class="text" id="outputText"></div>
@@ -71,6 +72,10 @@
                 pdfs: [
                     "W:/Corporate/Merchandise/Merchant Assistants/Jazeman Allen/Department SOP/Department 98 SOP.pdf",
                 ]
+            },
+            logisticsButton: {  
+                text: "Logistics: Samantha Neal",  
+                pdf: "files/Logistics_SOP.pdf"  
             }
         };
 
@@ -92,7 +97,7 @@
                         iframe.src = pdf; // Set the PDF source
                         pdfContainer.appendChild(iframe); // Add iframe to the container
                     });
-                } else {
+                } else if (message.pdf) {
                     const iframe = document.createElement('iframe');
                     iframe.src = message.pdf; // Set the PDF source for other buttons
                     pdfContainer.appendChild(iframe); // Add iframe to the container
