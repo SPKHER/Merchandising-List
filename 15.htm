@@ -8,8 +8,8 @@
         body { font-family: Arial, sans-serif; background-color: lightgreen; padding: 20px; }
         h1 { color: darkgreen; }
         .button { 
-            display: inline-block; /* Makes buttons inline */
-            margin: 5px; /* Space between buttons */
+            display: inline-block;
+            margin: 5px;
             padding: 5px 10px; 
             background-color: darkgreen; 
             color: white; 
@@ -27,7 +27,6 @@
 <body>
     <h1>Details for 15</h1>
     <p>Toys</p>
-    <!-- Changed to a button that uses JavaScript to go back to the previous page -->
     <button class="button" onclick="window.history.back()">Back to list</button>
     
     <div>
@@ -45,7 +44,6 @@
 
     <div class="text" id="outputText"></div>
 
-    <!-- Iframes container for displaying PDFs -->
     <div class="iframe-container" id="pdfContainer"></div>
 
     <script>
@@ -55,66 +53,58 @@
         const messages = {
             directorButton: {
                 text: "Brooks Harger",
-                pdf: "files/Director_SOP_15.pdf"
             },
             merchantButton: {
                 text: "Bill Nierhoff<br>Vincent Iannacito",
-                pdf: "files/Merchant_SOP_15.pdf"
             },
             associateMerchantButton: {
                 text: "Whitney Lash",
-                pdf: "files/Associate_Merchant_SOP_15.pdf"
             },
             allocationsButton: {
                 text: "Deborah Donathan<br>Donna Pometto<br>Maria Aquinto",
-                pdf: "files/Allocations_SOP_15.pdf"
+                pdf: "C:/Users/spkher/OneDrive - Dollar Tree/Documents/Prototype MA list-project/SOP stuff/DT Allocation Manual 2018.pdf"
             },
             replenishmentButton: {
                 text: "Open",
-                pdf: "files/Replenishment_SOP_15.pdf"
             },
             assortmentPlannerButton: {
                 text: "Jasmine Wright<br>Ashley Gillis",
-                pdf: "files/Assortment_Planner_SOP_15.pdf"
             },
             financialPlannerButton: {
                 text: "Debby Piercy",
-                pdf: "files/Financial_Planner_SOP_15.pdf"
             },
             importSpecialistButton: {
                 text: "Open",
-                pdf: "files/Import_Specialist_SOP_15.pdf"
             },
             merchantAssistantButton: {
                 text: "Maia Palmer",
                 pdfs: [
-                    "W:/Corporate/Merchandise/Merchant Assistants/Maia Palmer/Department SOP/Department 15 SOP.pdf",
+                    "W:/Corporate/Merchandise/Merchant Assistants/Maia Palmer/Department SOP/Department 15 SOP.pdf"
                 ]
             }
         };
 
         function hideAllTexts() {
-            outputText.innerHTML = ""; // Clear previous text using innerHTML
-            pdfContainer.innerHTML = ""; // Clear the PDF container
+            outputText.innerHTML = "";
+            pdfContainer.innerHTML = "";
         }
 
         document.querySelectorAll('.button').forEach(button => {
             button.addEventListener('click', () => {
                 hideAllTexts();
                 const message = messages[button.id];
-                outputText.innerHTML = message.text; // Show corresponding text with line breaks
+                outputText.innerHTML = message.text;
 
-                // If it's the Merchant Assistant button, display all PDFs
                 if (button.id === "merchantAssistantButton") {
                     message.pdfs.forEach(pdf => {
                         const iframe = document.createElement('iframe');
-                        iframe.src = pdf; // Set the PDF source
-                        pdfContainer.appendChild(iframe); // Add iframe to the container
+                        iframe.src = pdf;
+                        pdfContainer.appendChild(iframe);
                     });
                 } else {
                     const iframe = document.createElement('iframe');
-                    iframe.src = message.pdf; // Set the PDF source for other buttons
-                    pdfContainer.appendChild(iframe); // Add iframe to the container
+                    iframe.src = message.pdf;
+                    pdfContainer.appendChild(iframe);
                 }
             });
         });
