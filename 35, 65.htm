@@ -40,6 +40,7 @@
         <button class="button" id="financialPlannerButton">Financial Planner</button>
         <button class="button" id="importSpecialistButton">Import Specialist</button>
         <button class="button" id="merchantAssistantButton">Merchant Assistant</button>
+        <button class="button" id="logisticsButton">Logistics</button> <!-- Added Logistics button -->
     </div>
 
     <div class="text" id="outputText"></div>
@@ -82,6 +83,9 @@
                     "W:/Corporate/Merchandise/Merchant Assistants/Maia Palmer/Department SOP/Department 35 SOP.pdf",
                     "W:/Corporate/Merchandise/Merchant Assistants/Maia Palmer/Department SOP/Department 65 SOP.pdf"
                 ]
+            },
+            logisticsButton: {  
+                text: "Benjamin Hux (35, 65)", 
             }
         };
 
@@ -96,13 +100,14 @@
                 const message = messages[button.id];
                 outputText.innerHTML = message.text;
 
+                // If it's the Merchant Assistant button, display all PDFs
                 if (button.id === "merchantAssistantButton") {
                     message.pdfs.forEach(pdf => {
                         const iframe = document.createElement('iframe');
                         iframe.src = pdf;
                         pdfContainer.appendChild(iframe);
                     });
-                } else {
+                } else if (message.pdf) {
                     const iframe = document.createElement('iframe');
                     iframe.src = message.pdf;
                     pdfContainer.appendChild(iframe);
