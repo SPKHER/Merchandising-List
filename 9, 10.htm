@@ -26,7 +26,7 @@
 </head>
 <body>
     <h1>Details for 9, 10</h1>
-    <p>Chocolate, Gum & mints and Non-chocolates</p>
+    <p>Chocolate, Gum & Mints and Non-chocolates</p>
     <!-- Updated "Back to list" button to redirect to the list page -->
     <button class="button" onclick="window.location.href='Prototype MA List.htm'">Back to list</button>
     
@@ -41,6 +41,7 @@
         <button class="button" id="financialPlannerButton">Financial Planner</button>
         <button class="button" id="importSpecialistButton">Import Specialist</button>
         <button class="button" id="merchantAssistantButton">Merchant Assistant</button>
+        <button class="button" id="logisticsButton">Logistics</button> <!-- Added Logistics button -->
     </div>
 
     <div class="text" id="outputText"></div>
@@ -74,11 +75,11 @@
                 pdf: "files/Replenishment_SOP_9_10.pdf"
             },
             assortmentPlannerButton: {
-                text: "Tucker dinning (9)<br>Devin Grady (10)", // Line break for names
+                text: "Tucker Dinning (9)<br>Devin Grady (10)", // Line break for names
                 pdf: "files/Assortment_Planner_SOP_9_10.pdf"
             },
             financialPlannerButton: {
-                text: "Robert Rackauskas (35, 65)",
+                text: "Robert Rackauskas (9, 10)",
                 pdf: "files/Financial_Planner_SOP_9_10.pdf"
             },
             importSpecialistButton: {
@@ -91,6 +92,9 @@
                     "W:/Corporate/Merchandise/Merchant Assistants/Department SOP/Department 9 SOP.pdf",
                     "W:/Corporate/Merchandise/Merchant Assistants/Department SOP/Department 10 SOP.pdf"
                 ]
+            },
+            logisticsButton: {  // Added logistics button
+                text: "Tabitha Cole",
             }
         };
 
@@ -112,10 +116,10 @@
                         iframe.src = pdf; // Set the PDF source
                         pdfContainer.appendChild(iframe); // Add iframe to the container
                     });
-                } else {
+                } else if (message.pdf) {
                     const iframe = document.createElement('iframe');
-                    iframe.src = message.pdf; // Set the PDF source for other buttons
-                    pdfContainer.appendChild(iframe); // Add iframe to the container
+                    iframe.src = message.pdf;
+                    pdfContainer.appendChild(iframe);
                 }
             });
         });
