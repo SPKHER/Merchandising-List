@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>20, 60, 89-95</title>
+    <title>12, 17</title>
     <style>
         body { font-family: Arial, sans-serif; background-color: lightgreen; padding: 20px; }
         h1 { color: darkgreen; }
@@ -27,7 +27,8 @@
 <body>
     <h1>Details for DSD</h1>
     <p>Frozen</p>
-    <a href="DSD.htm">Back to list</a>
+    <!-- Use a button with JavaScript to go back to the list -->
+    <button class="button" onclick="window.location.href='Prototype MA List.htm'">Back to list</button>
     
     <div>
         <h2>Buttons</h2>
@@ -66,7 +67,7 @@
             },
             allocationsButton: {
                 text: "Matthew Bledsoe (12)<br>Sophie Zimm (17)",
-                pdf: "files/Allocations_SOP_12_17.pdf"
+                pdf: "C:/Users/spkher/OneDrive - Dollar Tree/Documents/Prototype MA list-project/SOP stuff/DT Allocation Manual 2018.pdf"
             },
             replenishmentButton: {
                 text: "Shawntel Pike (12)<br>Tiffany Johnston (17)",
@@ -87,8 +88,7 @@
             merchantAssistantButton: {
                 text: "Timara Pittman<br>Nasia Crawford<br>Michael Satterwhite<br>Emonnie Jacobs",
                 pdfs: [
-                    "W:/Corporate/Merchandise/Merchant Assistants/DSD/Department SOP/Department 12 SOP.pdf",
-		    "W:/Corporate/Merchandise/Merchant Assistants/DSD/Department SOP/Department 17 SOP.pdf",
+                    "C:/Users/spkher/OneDrive - Dollar Tree/Documents/Prototype MA list-project/SOP stuff/New Store Surveys.pdf"
                 ]
             }
         };
@@ -102,23 +102,26 @@
             button.addEventListener('click', () => {
                 hideAllTexts();
                 const message = messages[button.id];
-                outputText.innerHTML = message.text; // Show corresponding text with line breaks
 
-                // If it's the Merchant Assistant button, display all PDFs
-                if (button.id === "merchantAssistantButton") {
-                    message.pdfs.forEach(pdf => {
+                // Ensure the button's corresponding message exists
+                if (message) {
+                    outputText.innerHTML = message.text; // Show corresponding text with line breaks
+
+                    // If it's the Merchant Assistant button, display all PDFs
+                    if (button.id === "merchantAssistantButton" && message.pdfs) {
+                        message.pdfs.forEach(pdf => {
+                            const iframe = document.createElement('iframe');
+                            iframe.src = pdf; // Set the PDF source
+                            pdfContainer.appendChild(iframe); // Add iframe to the container
+                        });
+                    } else if (message.pdf) {
                         const iframe = document.createElement('iframe');
-                        iframe.src = pdf; // Set the PDF source
+                        iframe.src = message.pdf; // Set the PDF source for other buttons
                         pdfContainer.appendChild(iframe); // Add iframe to the container
-                    });
-                } else {
-                    const iframe = document.createElement('iframe');
-                    iframe.src = message.pdf; // Set the PDF source for other buttons
-                    pdfContainer.appendChild(iframe); // Add iframe to the container
+                    }
                 }
             });
         });
     </script>
 </body>
-</html>
 </html>
