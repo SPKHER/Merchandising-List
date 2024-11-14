@@ -3,50 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>24, 25, 70, 85</title>
+    <title>29, 31</title>
     <style>
-        body { 
-            font-family: Arial, sans-serif; 
-            background-color: green;  /* Set background color to green */
-            padding: 20px; 
-        }
-        h1 { 
-            color: black; 
-        }
+        body { font-family: Arial, sans-serif; background-color: lightgreen; padding: 20px; }
+        h1 { color: darkgreen; }
         .button { 
             display: inline-block;
             margin: 5px;
             padding: 5px 10px; 
-            background-color: blue;  
+            background-color: darkgreen; 
             color: white; 
             border: none; 
             border-radius: 5px; 
             cursor: pointer; 
             font-size: 14px; 
         }
-        .button:hover { 
-            background-color: darkblue; 
-        }
-        .text { 
-            margin-top: 20px; 
-            font-size: 18px; 
-        }
-        .iframe-container { 
-            margin-top: 20px; 
-            display: flex; 
-            flex-direction: column; 
-        }
-        iframe { 
-            width: 100%; 
-            height: 500px; 
-            border: none; 
-            margin-bottom: 10px; 
-        }
+        .button:hover { background-color: green; }
+        .text { margin-top: 20px; font-size: 18px; }
+        .iframe-container { margin-top: 20px; display: flex; flex-direction: column; }
+        iframe { width: 100%; height: 500px; border: none; margin-bottom: 10px; }
     </style>
 </head>
 <body>
-    <h1>Details for 24, 25, 70, 85</h1>
-    <p>Party Celebration, Party Paper, Books & Stationary</p>
+    <h1>Details for 29, 31</h1>
+    <p>Household Disposables & Household Consumables</p>
     <button class="button" onclick="window.history.back()">Back to list</button>
     
     <div>
@@ -60,7 +40,7 @@
         <button class="button" id="financialPlannerButton">Financial Planner</button>
         <button class="button" id="importSpecialistButton">Import Specialist</button>
         <button class="button" id="merchantAssistantButton">Merchant Assistant</button>
-        <button class="button" id="logisticsButton">Logistics</button>
+	<button class="button" id="logisticsButton">Logistics</button>
     </div>
 
     <div class="text" id="outputText"></div>
@@ -73,42 +53,40 @@
 
         const messages = {
             directorButton: {
-                text: "Tammy Balles (24 & 25)<br>Carlin Maher (50, 70 & 85)",
+                text: "Ivana Zelms (29, 31)",
             },
             merchantButton: {
-                text: "Jessica Faber (24)<br>Liza Johnson (25)<br>Ben Pestik Jr. (70 & 85)",
+                text: "Karima Lockwood (30)<br>Mike Hoffman & Jay Capano (31)",
             },
             associateMerchantButton: {
-                text: "Kaitlin Hernandez (24)<br>Taylor Gillie (25)",
+                text: "Open (29)<br>Caitlin Kilpatrick (31)",
             },
             allocationsButton: {
-                text: "Willy Oyola (24 & 25)<br>Gwenyth Zobel (25)",
+                text: "Colleen Curtin (29 & 31)",
                 pdf: "C:/Users/spkher/OneDrive - Dollar Tree/Documents/Prototype MA list-project/SOP stuff/DT Allocation Manual 2018.pdf"
             },
             replenishmentButton: {
-                text: "Janell Dantzler (24)<br>Brent Jones (24 & 25)<br>Bailey Lovell (70 & 85)",
+                text: "Hayley Goddard (29)<br>& Joey Rocca (31)",
             },
             assortmentPlannerButton: {
-                text: "Alissa Ralston (24)<br>Michelle Rhoads (25)<br>Wesley Fillah (70)",
+                text: "Twyla Samson (29)<br>& Michael Wagner (31)",
             },
             financialPlannerButton: {
-                text: "Cynthia McDonald (24, 25, & 70)",
+                text: "Aamanda Pastore (29, 31)",
             },
             importSpecialistButton: {
-                text: "Effie Toledo (24, 25, & 85)<br>Priscilla Cole (70, & 85)",
+                text: "Jason Rubin (29 & 31)",
             },
             merchantAssistantButton: {
-                text: "Spencer Kher (24, 25, 70, & 85)",
+                text: "Open (29 & 31)",
                 pdfs: [
-                    "W:/Corporate/Merchandise/Merchant Assistants/Spencer Kher/Department SOP/Department 24 SOP.pdf",
-                    "W:/Corporate/Merchandise/Merchant Assistants/Spencer Kher/Department SOP/Department 25 SOP.pdf",
-                    "W:/Corporate/Merchandise/Merchant Assistants/Spencer Kher/Department SOP/Department 70 SOP.pdf",
-                    "W:/Corporate/Merchandise/Merchant Assistants/Spencer Kher/Department SOP/Department 85 SOP.pdf"
+                    "W:/Corporate/Merchandise/Merchant Assistants/Department SOP/Department 29 SOP.pdf",
+                    "W:/Corporate/Merchandise/Merchant Assistants/Department SOP/Department 31 SOP.pdf"
                 ]
-            },
-            logisticsButton: {  
-                text: "Monica Questel (24, 25, 70, 85)",
             }
+	    logisticsButton: {  // Added logistics button
+                text: "Samantha Neal (13, 14)",
+		}
         };
 
         function hideAllTexts() {
@@ -128,7 +106,7 @@
                         iframe.src = pdf;
                         pdfContainer.appendChild(iframe);
                     });
-                } else if (message.pdf) {
+                } else {
                     const iframe = document.createElement('iframe');
                     iframe.src = message.pdf;
                     pdfContainer.appendChild(iframe);
