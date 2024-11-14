@@ -5,24 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>35, 65</title>
     <style>
-        body { font-family: Arial, sans-serif; background-color: lightgreen; padding: 20px; }
-        h1 { color: darkgreen; }
-        .button { 
-            display: inline-block;
-            margin: 5px;
-            padding: 5px 10px; 
-            background-color: darkgreen; 
-            color: white; 
-            border: none; 
-            border-radius: 5px; 
-            cursor: pointer; 
-            font-size: 14px; <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>35, 65</title>
-    <style>
         body { font-family: Arial, sans-serif; background-color: green; padding: 20px; }
         h1 { color: black; }
         .button { 
@@ -44,107 +26,6 @@
 </head>
 <body>
     <h1>Details for 35, 65</h1>
-    <p>Hardware & Electronics</p>
-    <button class="button" onclick="window.location.href='Prototype MA List.htm'">Back to list</button>
-    
-    <div>
-        <h2>Buttons</h2>
-        <button class="button" id="directorButton">Director</button>
-        <button class="button" id="merchantButton">Merchant</button>
-        <button class="button" id="associateMerchantButton">Associate Merchant</button>
-        <button class="button" id="allocationsButton">Allocations</button>
-        <button class="button" id="replenishmentButton">Replenishment</button>
-        <button class="button" id="assortmentPlannerButton">Assortment Planner</button>
-        <button class="button" id="financialPlannerButton">Financial Planner</button>
-        <button class="button" id="importSpecialistButton">Import Specialist</button>
-        <button class="button" id="merchantAssistantButton">Merchant Assistant</button>
-        <button class="button" id="logisticsButton">Logistics</button> <!-- Added Logistics button -->
-    </div>
-
-    <div class="text" id="outputText"></div>
-
-    <div class="iframe-container" id="pdfContainer"></div>
-
-    <script>
-        const outputText = document.getElementById('outputText');
-        const pdfContainer = document.getElementById('pdfContainer');
-
-        const messages = {
-            directorButton: {
-                text: "Brooks Harger (35, 65)",
-            },
-            merchantButton: {
-                text: "Lindsay Sharlow (35)<br>Diana Avato (65)",
-            },
-            associateMerchantButton: {
-                text: "Harry Russell (35)<br>John Odorski (65)",
-            },
-            allocationsButton: {
-                text: "Garrett Blanchard (35)<br>Redell Atkinson (65)",
-                pdf: "C:/Users/spkher/OneDrive - Dollar Tree/Documents/Prototype MA list-project/SOP stuff/DT Allocation Manual 2018.pdf"
-            },
-            replenishmentButton: {
-                text: "Redell Atkinson (35)<br>Stephanie Frazier (65)",
-            },
-            assortmentPlannerButton: {
-                text: "Patrick O'Hora (35)<br>Alain Villafranca (65)",
-            },
-            financialPlannerButton: {
-                text: "Debbie Piercy (35, 65)",
-            },
-            importSpecialistButton: {
-                text: "Brianna Bellamy (35, 65)",
-            },
-            merchantAssistantButton: {
-                text: "Maia Palmer (35, 65)",
-                pdfs: [
-                    "W:/Corporate/Merchandise/Merchant Assistants/Maia Palmer/Department SOP/Department 35 SOP.pdf",
-                    "W:/Corporate/Merchandise/Merchant Assistants/Maia Palmer/Department SOP/Department 65 SOP.pdf"
-                ]
-            },
-            logisticsButton: {  
-                text: "Benjamin Hux (35, 65)", 
-            }
-        };
-
-        function hideAllTexts() {
-            outputText.innerHTML = "";
-            pdfContainer.innerHTML = "";
-        }
-
-        document.querySelectorAll('.button').forEach(button => {
-            button.addEventListener('click', () => {
-                hideAllTexts();
-                const message = messages[button.id];
-                outputText.innerHTML = message.text;
-
-                // If it's the Merchant Assistant button, display all PDFs
-                if (button.id === "merchantAssistantButton") {
-                    message.pdfs.forEach(pdf => {
-                        const iframe = document.createElement('iframe');
-                        iframe.src = pdf;
-                        pdfContainer.appendChild(iframe);
-                    });
-                } else if (message.pdf) {
-                    const iframe = document.createElement('iframe');
-                    iframe.src = message.pdf;
-                    pdfContainer.appendChild(iframe);
-                }
-            });
-        });
-    </script>
-</body>
-</html>
-
-        }
-        .button:hover { background-color: green; }
-        .text { margin-top: 20px; font-size: 18px; }
-        .iframe-container { margin-top: 20px; display: flex; flex-direction: column; }
-        iframe { width: 100%; height: 500px; border: none; margin-bottom: 10px; }
-    </style>
-</head>
-<body>
-    <h1>Details for 29, 31</h1>
     <p>Hardware & Electronics</p>
     <button class="button" onclick="window.location.href='Prototype MA List.htm'">Back to list</button>
     
